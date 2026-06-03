@@ -88,7 +88,7 @@ export function getRelativeTime(dateString: string): string {
 }
 
 export function getShortUrl(shortCode: string): string {
-  const baseUrl = import.meta.env.VITE_REDIRECT_URL || 'http://localhost:5000/r';
+  const baseUrl = import.meta.env.VITE_REDIRECT_URL || 'http://localhost:5001/r';
   return `${baseUrl}/${shortCode}`;
 }
 

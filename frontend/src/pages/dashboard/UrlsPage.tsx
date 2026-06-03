@@ -255,7 +255,7 @@ export default function UrlsPage() {
                       /{url.shortCode}
                     </span>
                     <a 
-                      href={`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1'}/../../r/${url.shortCode}`} 
+                      href={`${import.meta.env.VITE_API_URL || 'http://localhost:5001/api/v1'}/../../r/${url.shortCode}`} 
                       target="_blank" 
                       rel="noreferrer"
                       className="text-surface-400 hover:text-surface-600 dark:hover:text-surface-200"

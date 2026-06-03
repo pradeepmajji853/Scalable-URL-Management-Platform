@@ -188,7 +188,7 @@ export default function DashboardOverview() {
                       {link.clickCount || 0} clicks
                     </span>
                     <a
-                      href={`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1'}/../../r/${link.shortCode}`}
+                      href={`${import.meta.env.VITE_API_URL || 'http://localhost:5001/api/v1'}/../../r/${link.shortCode}`}
                       target="_blank"
                       rel="noreferrer"
                       className="p-1.5 rounded-lg bg-surface-100 dark:bg-surface-800 hover:bg-surface-200 dark:hover:bg-surface-700 text-surface-500 transition-colors"
