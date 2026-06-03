@@ -14,7 +14,7 @@ import Modal from '../../components/ui/Modal';
 import Skeleton from '../../components/ui/Skeleton';
 import EmptyState from '../../components/ui/EmptyState';
 import toast from 'react-hot-toast';
-import { formatDate } from '../../lib/utils';
+import { formatDate, getErrorMessage } from '../../lib/utils';
 
 export default function TeamPage() {
   const queryClient = useQueryClient();
@@ -70,7 +70,7 @@ export default function TeamPage() {
       toast.success('Team workspace created successfully!');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to create team workspace');
+      toast.error(getErrorMessage(err, 'Failed to create team workspace'));
     }
   });
 
@@ -85,7 +85,7 @@ export default function TeamPage() {
       toast.success('Member added successfully!');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to add member to team');
+      toast.error(getErrorMessage(err, 'Failed to add member to team'));
     }
   });
 
@@ -98,7 +98,7 @@ export default function TeamPage() {
       toast.success('Member removed from team');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to remove member');
+      toast.error(getErrorMessage(err, 'Failed to remove member'));
     }
   });
 
@@ -111,7 +111,7 @@ export default function TeamPage() {
       toast.success('Member role updated successfully');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to update member role');
+      toast.error(getErrorMessage(err, 'Failed to update member role'));
     }
   });
 

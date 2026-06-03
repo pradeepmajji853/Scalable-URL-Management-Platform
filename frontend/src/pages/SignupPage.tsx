@@ -6,6 +6,7 @@ import AuthLayout from '../components/layout/AuthLayout';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import toast from 'react-hot-toast';
+import { getErrorMessage } from '../lib/utils';
 
 export default function SignupPage() {
   const [name, setName] = useState('');
@@ -37,7 +38,7 @@ export default function SignupPage() {
       toast.success('Account created successfully! Please verify your email.');
       navigate('/dashboard');
     } catch (err: any) {
-      const msg = err.response?.data?.message || 'Failed to register account';
+      const msg = getErrorMessage(err, 'Failed to register account');
       setError(msg);
       toast.error(msg);
     } finally {

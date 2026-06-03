@@ -19,7 +19,7 @@ import Modal from '../../components/ui/Modal';
 import Skeleton from '../../components/ui/Skeleton';
 import EmptyState from '../../components/ui/EmptyState';
 import toast from 'react-hot-toast';
-import { formatDate } from '../../lib/utils';
+import { formatDate, getErrorMessage } from '../../lib/utils';
 
 type Tab = 'profile' | 'security' | 'api-keys';
 
@@ -65,7 +65,7 @@ export default function SettingsPage() {
       toast.success('Profile updated successfully!');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to update profile');
+      toast.error(getErrorMessage(err, 'Failed to update profile'));
     }
   });
 
@@ -79,7 +79,7 @@ export default function SettingsPage() {
       toast.success('Password updated successfully!');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to update password');
+      toast.error(getErrorMessage(err, 'Failed to update password'));
     }
   });
 
@@ -95,7 +95,7 @@ export default function SettingsPage() {
       setKeyExpires('');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to generate API Key');
+      toast.error(getErrorMessage(err, 'Failed to generate API Key'));
     }
   });
 
@@ -106,7 +106,7 @@ export default function SettingsPage() {
       toast.success('API Key revoked');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to revoke API Key');
+      toast.error(getErrorMessage(err, 'Failed to revoke API Key'));
     }
   });
 

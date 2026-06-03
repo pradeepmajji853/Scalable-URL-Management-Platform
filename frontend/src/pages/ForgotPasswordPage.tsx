@@ -6,6 +6,7 @@ import AuthLayout from '../components/layout/AuthLayout';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import toast from 'react-hot-toast';
+import { getErrorMessage } from '../lib/utils';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -25,7 +26,7 @@ export default function ForgotPasswordPage() {
       setIsSubmitted(true);
       toast.success('Reset email sent successfully');
     } catch (err: any) {
-      toast.error(err.response?.data?.message || 'Something went wrong. Please try again.');
+      toast.error(getErrorMessage(err, 'Something went wrong. Please try again.'));
     } finally {
       setIsLoading(false);
     }

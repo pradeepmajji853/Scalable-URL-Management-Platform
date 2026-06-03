@@ -36,7 +36,7 @@ EXPOSE 80
 
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget -qO- http://localhost/health || exit 1
+  CMD wget -qO- http://127.0.0.1/health || exit 1
 
 # Start nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]

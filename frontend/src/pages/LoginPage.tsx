@@ -6,6 +6,8 @@ import AuthLayout from '../components/layout/AuthLayout';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import toast from 'react-hot-toast';
+import { getErrorMessage } from '../lib/utils';
+
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -30,7 +32,7 @@ export default function LoginPage() {
       toast.success('Logged in successfully!');
       navigate('/dashboard');
     } catch (err: any) {
-      const msg = err.response?.data?.message || 'Invalid email or password';
+      const msg = getErrorMessage(err, 'Invalid email or password');
       setError(msg);
       toast.error(msg);
     } finally {

@@ -26,7 +26,7 @@ import Skeleton from '../../components/ui/Skeleton';
 import EmptyState from '../../components/ui/EmptyState';
 import toast from 'react-hot-toast';
 import { useDebounce } from '../../hooks/useDebounce';
-import { formatDate } from '../../lib/utils';
+import { formatDate, getErrorMessage } from '../../lib/utils';
 import { Link } from 'react-router-dom';
 
 export default function UrlsPage() {
@@ -93,7 +93,7 @@ export default function UrlsPage() {
       resetForm();
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to create short link.');
+      toast.error(getErrorMessage(err, 'Failed to create short link.'));
     }
   });
 
@@ -107,7 +107,7 @@ export default function UrlsPage() {
       resetForm();
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to update link.');
+      toast.error(getErrorMessage(err, 'Failed to update link.'));
     }
   });
 
@@ -120,7 +120,7 @@ export default function UrlsPage() {
       toast.success('Link deleted successfully!');
     },
     onError: (err: any) => {
-      toast.error(err.response?.data?.message || 'Failed to delete link.');
+      toast.error(getErrorMessage(err, 'Failed to delete link.'));
     }
   });
 

@@ -119,3 +119,12 @@ export function getPasswordStrength(password: string): {
 
   return { score, ...levels[Math.min(score, levels.length - 1)] };
 }
+
+export function getErrorMessage(err: any, fallback: string): string {
+  let msg = err.response?.data?.message || fallback;
+  if (err.response?.data?.errors && Array.isArray(err.response.data.errors)) {
+    const details = err.response.data.errors.map((e: any) => e.message).join(', ');
+    msg = `${msg}: ${details}`;
+  }
+  return msg;
+}
