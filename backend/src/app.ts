@@ -18,8 +18,15 @@ app.use(helmet({
 }));
 
 // CORS Configuration
+const allowedOrigins = config.cors.origin.split(',');
 app.use(cors({
-  origin: config.cors.origin,
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.indexOf('*') !== -1) {
+      return callback(null, true);
+    }
+    return callback(new Error('The CORS policy for this site does not allow access from the specified Origin.'), false);
+  },
   credentials: true,
 }));
 
